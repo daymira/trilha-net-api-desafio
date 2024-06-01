@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
-using TrilhaApiDesafio.Context;
+using trilha_net_api_desafio.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +9,9 @@ builder.Services.AddDbContext<OrganizadorContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao")));
 
 builder.Services.AddControllers().AddJsonOptions(options =>
-    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
+// builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
